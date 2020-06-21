@@ -4,7 +4,6 @@ Test real world contracts using Openzeppelin unit testing dataset
 ## Dependencies
 
 For this test setup, following are the modules being used and its versions.
-> :warning: **oz/test-environment** does not support solidity-coverage yet. Using it will produce wrong coverage data!
 
 * openzeppelin/test-helpers@0.5.5
 * mocha@7.1.1
