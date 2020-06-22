@@ -5,6 +5,7 @@
 //! By Parity Technologies, 2017.
 //! Released under the Apache Licence 2.
 //Had to change solidity version to 0.4.16, previous was 0.4.15
+//this truffle project is now using solc@0.4.17
 pragma solidity ^0.4.16;
 
 // ECR20 standard token interface

@@ -8,20 +8,20 @@ const {
   shouldBehaveLikeERC20Approve,
 } = require('./ERC20.behavior');
 
-const FuturXe = artifacts.require('FuturXe');
 
-contract('FuturXe', function ([_, initialHolder, recipient, anotherAccount]) {
+const SwftCoin = artifacts.require('SwftCoin');
+
+contract('SwftCoin', function ([_, initialHolder, recipient, anotherAccount]) {
   const initialSupply = new BN(100);
 
   beforeEach(async function () {
-    this.token = await FuturXe.new(1000,"FuturXe","FXE",10);
+    this.token = await SwftCoin.new(1000,"SwiftCoin",18,"SFC");
   });
 
   shouldBehaveLikeERC20('ERC20', initialSupply, initialHolder, recipient, anotherAccount);
 
 
-
-  describe('_mintToken', function () {
+  describe('_mint', function () {
     const amount = new BN(50);
     it('rejects a null account', async function () {
       await expectRevert(

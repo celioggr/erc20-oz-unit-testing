@@ -8,13 +8,13 @@ const {
   shouldBehaveLikeERC20Approve,
 } = require('./ERC20.behavior');
 
-const FuturXe = artifacts.require('FuturXe');
+const TetherToken = artifacts.require('TetherToken');
 
-contract('FuturXe', function ([_, initialHolder, recipient, anotherAccount]) {
+contract('TetherToken', function ([_, initialHolder, recipient, anotherAccount]) {
   const initialSupply = new BN(100);
 
   beforeEach(async function () {
-    this.token = await FuturXe.new(1000,"FuturXe","FXE",10);
+    this.token = await TetherToken.new(1000,"TetherToken","TET",18);
   });
 
   shouldBehaveLikeERC20('ERC20', initialSupply, initialHolder, recipient, anotherAccount);
@@ -25,13 +25,13 @@ contract('FuturXe', function ([_, initialHolder, recipient, anotherAccount]) {
     const amount = new BN(50);
     it('rejects a null account', async function () {
       await expectRevert(
-        this.token.mintToken(ZERO_ADDRESS, amount), 'ERC20: mint to the zero address'
+        this.token.issue(ZERO_ADDRESS, amount), 'ERC20: mint to the zero address'
       );
     });
 
     describe('for a non zero account', function () {
       beforeEach('minting', async function () {
-        const { logs } = await this.token.mintToken(recipient, amount);
+        const { logs } = await this.token.issue(recipient, amount);
         this.logs = logs;
       });
 

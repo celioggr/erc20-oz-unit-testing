@@ -3,6 +3,7 @@
 */
 
 //Had to change solidity version to 0.4.16, previous was 0.4.2
+//this truffle project is now using solc@0.4.17
 pragma solidity ^0.4.16;
 
 contract ERC20Interface {

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for contracts/BitAseanToken.sol</title>
+    <title>Code coverage report for contracts/SwiftCoin.sol</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -16,28 +16,28 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../index.html">all files</a> / <a href="index.html">contracts/</a> BitAseanToken.sol
+      <a href="../index.html">all files</a> / <a href="index.html">contracts/</a> SwiftCoin.sol
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">49.18% </span>
+        <span class="strong">46.67% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>30/61</span>
+        <span class='fraction'>28/60</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">35.71% </span>
+        <span class="strong">29.41% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>10/28</span>
+        <span class='fraction'>10/34</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">61.54% </span>
+        <span class="strong">47.06% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>8/13</span>
+        <span class='fraction'>8/17</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">59.18% </span>
+        <span class="strong">46.03% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>29/49</span>
+        <span class='fraction'>29/63</span>
       </div>
     </div>
   </div>
@@ -197,9 +197,28 @@
 152
 153
 154
-155</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -217,8 +236,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -294,6 +312,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -350,14 +370,34 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
- *Submitted for verification at Etherscan.io on 2017-07-25
+ *Submitted for verification at Etherscan.io on 2017-09-09
 */
-//Had to change solidity version to 0.4.16, previous was 0.4.13
-//this truffle project is now using solc@0.4.17
-pragma solidity ^0.4.16;
 &nbsp;
+pragma solidity ^0.4.2;
 contract owned {
     address public owner;
 &nbsp;
@@ -366,21 +406,20 @@ contract owned {
     }
 &nbsp;
     modifier onlyOwner {
-        <span class="missing-if-branch" title="if path not taken" >I</span>if (msg.sender != owner) <span class="cstat-no" title="statement not covered" >revert()</span>;
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (msg.sender != owner) throw;
         _;
     }
 &nbsp;
+</span>    function transferOwnership(address newOwner) onlyOwne<span class="fstat-no" title="function not covered" >r {
+<span class="cstat-no" title="statement not covered" >        owner = newOwner</span>;
+    }
 }
 &nbsp;
-contract tokenRecipient {
-&nbsp;
-    function receiveApproval(address _from, uint256 _value, address _token, bytes _extraData);
-&nbsp;
-}
+contract tokenRecipient { function receiveApproval(address _from, uint256 _value, address _token, bytes _extraData); }
 &nbsp;
 contract token {
-&nbsp;
     /* Public variables of the token */
+    string public standard = 'Token 0.1';
     string public name;
     string public symbol;
     uint8 public decimals;
@@ -409,8 +448,8 @@ contract token {
 &nbsp;
     /* Send coins */
 <span class="fstat-no" title="function not covered" >    function transfer(address _to, uint256 _value</span>) {
-<span class="cstat-no" title="statement not covered" >        if (balanceOf[msg.sender] &lt; _value) <span class="cstat-no" title="statement not covered" >revert()</span>;</span>           // Check if the sender has enough
-<span class="cstat-no" title="statement not covered" >        if (balanceOf[_to] + _value &lt; balanceOf[_to]) <span class="cstat-no" title="statement not covered" >revert()</span>;</span> // Check for overflows
+<span class="cstat-no" title="statement not covered" >        if (balanceOf[msg.sender] &lt; _value) throw;</span>           // Check if the sender has enough
+<span class="cstat-no" title="statement not covered" >        if (balanceOf[_to] + _value &lt; balanceOf[_to]) throw;</span> // Check for overflows
 <span class="cstat-no" title="statement not covered" >        balanceOf[msg.sender] -= _value</span>;                     // Subtract from the sender
 <span class="cstat-no" title="statement not covered" >        balanceOf[_to] += _value</span>;                            // Add the same to the recipient
 <span class="cstat-no" title="statement not covered" >        Transfer(msg.sender, _to, _value)</span>;                   // Notify anyone listening that this transfer took place
@@ -425,7 +464,7 @@ contract token {
 &nbsp;
     /* Approve and then communicate the approved contract in a single tx */
 <span class="fstat-no" title="function not covered" >    function approveAndCall(address _spender, uint256 _value, bytes _extraData)</span>
-        returns (bool success) {
+        returns (bool success) {    
 <span class="cstat-no" title="statement not covered" >        tokenRecipient spender = tokenRecipient(_spender);</span>
 <span class="cstat-no" title="statement not covered" >        if (approve(_spender, _value)) {</span>
 <span class="cstat-no" title="statement not covered" >            spender.receiveApproval(msg.sender, _value, this, _extraData)</span>;
@@ -433,11 +472,11 @@ contract token {
         }
     }
 &nbsp;
-    /* A contract attempts to get the coins e.g. exchange transfer our token */
+    /* A contract attempts to get the coins */
 <span class="fstat-no" title="function not covered" >    function transferFrom(address _from, address _to, uint256 _value) returns (bool success</span>) {
-<span class="cstat-no" title="statement not covered" >        if (balanceOf[_from] &lt; _value) <span class="cstat-no" title="statement not covered" >revert()</span>;</span>                 // Check if the sender has enough
-<span class="cstat-no" title="statement not covered" >        if (balanceOf[_to] + _value &lt; balanceOf[_to]) <span class="cstat-no" title="statement not covered" >revert()</span>;</span>  // Check for overflows
-<span class="cstat-no" title="statement not covered" >        if (_value &gt; allowance[_from][msg.sender]) <span class="cstat-no" title="statement not covered" >revert()</span>;</span>   // Check allowance
+<span class="cstat-no" title="statement not covered" >        if (balanceOf[_from] &lt; _value) throw;</span>                 // Check if the sender has enough
+<span class="cstat-no" title="statement not covered" >        if (balanceOf[_to] + _value &lt; balanceOf[_to]) throw;</span>  // Check for overflows
+<span class="cstat-no" title="statement not covered" >        if (_value &gt; allowance[_from][msg.sender]) throw;</span>   // Check allowance
 <span class="cstat-no" title="statement not covered" >        balanceOf[_from] -= _value</span>;                          // Subtract from the sender
 <span class="cstat-no" title="statement not covered" >        balanceOf[_to] += _value</span>;                            // Add the same to the recipient
 <span class="cstat-no" title="statement not covered" >        allowance[_from][msg.sender] -= _value</span>;
@@ -447,11 +486,14 @@ contract token {
 &nbsp;
     /* This unnamed function is called whenever someone tries to send ether to it */
 <span class="fstat-no" title="function not covered" >    function (</span>) {
-<span class="cstat-no" title="statement not covered" >        revert()</span>;     // Prevents accidental sending of ether
+        throw;     // Prevents accidental sending of ether
     }
 }
 &nbsp;
-contract BitAseanToken is owned, token {
+contract SwftCoin is owned, token {
+&nbsp;
+    uint256 public sellPrice;
+    uint256 public buyPrice;
 &nbsp;
     mapping (address =&gt; bool) public frozenAccount;
 &nbsp;
@@ -459,19 +501,18 @@ contract BitAseanToken is owned, token {
     event FrozenFunds(address target, bool frozen);
 &nbsp;
     /* Initializes contract with initial supply tokens to the creator of the contract */
-    function BitAseanToken(
+    function SwftCoin(
         uint256 initialSupply,
         string tokenName,
         uint8 decimalUnits,
         string tokenSymbol
-    ) token (initialSupply, tokenName, decimalUnits, tokenSymbol) {
-    }
+    ) token (initialSupply, tokenName, decimalUnits, tokenSymbol) {}
 &nbsp;
     /* Send coins */
     function transfer(address _to, uint256 _value) {
-        if (balanceOf[msg.sender] &lt; _value) revert();           // Check if the sender has enough
-        <span class="missing-if-branch" title="if path not taken" >I</span>if (balanceOf[_to] + _value &lt; balanceOf[_to]) <span class="cstat-no" title="statement not covered" >revert()</span>; // Check for overflows
-        <span class="missing-if-branch" title="if path not taken" >I</span>if (frozenAccount[msg.sender]) <span class="cstat-no" title="statement not covered" >revert()</span>;                // Check if frozen
+        if (balanceOf[msg.sender] &lt; _value) throw;           // Check if the sender has enough
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (balanceOf[_to] + _value &lt; balanceOf[_to]) throw; // Check for overflows
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (frozenAccount[msg.sender]) throw;                // Check if frozen
         balanceOf[msg.sender] -= _value;                     // Subtract from the sender
         balanceOf[_to] += _value;                            // Add the same to the recipient
         Transfer(msg.sender, _to, _value);                   // Notify anyone listening that this transfer took place
@@ -480,10 +521,10 @@ contract BitAseanToken is owned, token {
 &nbsp;
     /* A contract attempts to get the coins */
     function transferFrom(address _from, address _to, uint256 _value) returns (bool success) {
-        <span class="missing-if-branch" title="if path not taken" >I</span>if (frozenAccount[_from]) <span class="cstat-no" title="statement not covered" >revert()</span>;                        // Check if frozen
-        if (balanceOf[_from] &lt; _value) revert();                 // Check if the sender has enough
-        <span class="missing-if-branch" title="if path not taken" >I</span>if (balanceOf[_to] + _value &lt; balanceOf[_to]) <span class="cstat-no" title="statement not covered" >revert()</span>;  // Check for overflows
-        <span class="missing-if-branch" title="if path not taken" >I</span>if (_value &gt; allowance[_from][msg.sender]) <span class="cstat-no" title="statement not covered" >revert()</span>;   // Check allowance
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (frozenAccount[_from]) throw;                        // Check if frozen            
+        if (balanceOf[_from] &lt; _value) throw;                 // Check if the sender has enough
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (balanceOf[_to] + _value &lt; balanceOf[_to]) throw;  // Check for overflows
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (_value &gt; allowance[_from][msg.sender]) throw;   // Check allowance
         balanceOf[_from] -= _value;                          // Subtract from the sender
         balanceOf[_to] += _value;                            // Add the same to the recipient
         allowance[_from][msg.sender] -= _value;
@@ -503,7 +544,29 @@ contract BitAseanToken is owned, token {
 <span class="cstat-no" title="statement not covered" >        FrozenFunds(target, freeze)</span>;
     }
 &nbsp;
+</span>    function setPrices(uint256 newSellPrice, uint256 newBuyPrice) onlyOwne<span class="fstat-no" title="function not covered" >r {
+<span class="cstat-no" title="statement not covered" >        sellPrice = newSellPrice</span>;
+<span class="cstat-no" title="statement not covered" >        buyPrice = newBuyPrice</span>;
+    }
 &nbsp;
+<span class="fstat-no" title="function not covered" >    function buy() payabl</span>e {
+<span class="cstat-no" title="statement not covered" >        uint amount = msg.value / buyPrice;</span>                // calculates the amount
+<span class="cstat-no" title="statement not covered" >        if (balanceOf[this] &lt; amount) throw;</span>               // checks if it has enough to sell
+<span class="cstat-no" title="statement not covered" >        balanceOf[msg.sender] += amount</span>;                   // adds the amount to buyer's balance
+<span class="cstat-no" title="statement not covered" >        balanceOf[this] -= amount</span>;                         // subtracts amount from seller's balance
+<span class="cstat-no" title="statement not covered" >        Transfer(this, msg.sender, amount)</span>;                // execute an event reflecting the change
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function sell(uint256 amount</span>) {
+<span class="cstat-no" title="statement not covered" >        if (balanceOf[msg.sender] &lt; amount ) throw;</span>        // checks if the sender has enough to sell
+<span class="cstat-no" title="statement not covered" >        balanceOf[this] += amount</span>;                         // adds the amount to owner's balance
+<span class="cstat-no" title="statement not covered" >        balanceOf[msg.sender] -= amount</span>;                   // subtracts the amount from seller's balance
+<span class="cstat-no" title="statement not covered" >        if (!msg.sender.send(amount * sellPrice)) {        // sends ether to the seller. It's important</span>
+            throw;                                         // to do this last to avoid recursion attacks
+        } else {
+<span class="cstat-no" title="statement not covered" >            Transfer(msg.sender, this, amount)</span>;            // executes an event reflecting on the change
+        }               
+    }
 }
 &nbsp;</pre></td></tr>
 </table></pre>
