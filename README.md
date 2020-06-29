@@ -37,6 +37,6 @@ Some commands commonly used.
 ##### Run test coverage 
     npx truffle run coverage 
 ##### Run tests
-    npm test
+    npx  truffle test
 ##### Compile
-    npm truffle compile
+    npx truffle compile
