@@ -30,6 +30,10 @@ Edit *truffle-config.js*
     },
     + plugins: ["solidity-coverage"],
     
+    //version needed for contracts under test
+    compilers: {
+        solc: {
+        version: "0.4.17"
 # Usage
 
 Some commands commonly used.
