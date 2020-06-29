@@ -14,13 +14,14 @@ contract('FuturXe', function ([_, initialHolder, recipient, anotherAccount]) {
   const initialSupply = new BN(100);
 
   beforeEach(async function () {
-    this.token = await FuturXe.new(1000,"FuturXe","FXE",10);
+    this.token = await FuturXe.new(100,"FuturXe","FXE",10,{'from':initialHolder});
+    //this.token.transfer(initialHolder,100);
   });
 
   shouldBehaveLikeERC20('ERC20', initialSupply, initialHolder, recipient, anotherAccount);
 
 
-
+  /*
   describe('_mintToken', function () {
     const amount = new BN(50);
     it('rejects a null account', async function () {
@@ -54,4 +55,5 @@ contract('FuturXe', function ([_, initialHolder, recipient, anotherAccount]) {
       });
     });
   });
+  */
 });

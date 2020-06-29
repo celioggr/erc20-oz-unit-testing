@@ -14,13 +14,14 @@ contract('AmberToken', function ([_, initialHolder, recipient, anotherAccount]) 
   const initialSupply = new BN(100);
 
   beforeEach(async function () {
-    this.token = await AmberToken.new();
+    this.token = await AmberToken.new({'from':initialHolder});
     //mint some tokens before testing any further???
   });
 
 
   shouldBehaveLikeERC20('ERC20', initialSupply, initialHolder, recipient, anotherAccount);
 
+  /*
   describe('_mint', function () {
     const amount = new BN(50);
     it('rejects a null account', async function () {
@@ -54,4 +55,5 @@ contract('AmberToken', function ([_, initialHolder, recipient, anotherAccount]) 
       });
     });
   });
+*/
 });

@@ -16,12 +16,12 @@ contract('INT', function ([_, initialHolder, recipient, anotherAccount]) {
 
   beforeEach(async function () {
     //has token supply hard coded on contract
-    this.token = await INT.new();
+    this.token = await INT.new({'from':initialHolder});
   });
 
   shouldBehaveLikeERC20('ERC20', initialSupply, initialHolder, recipient, anotherAccount);
 
-
+  /*
   describe('_mint', function () {
     const amount = new BN(50);
     it('rejects a null account', async function () {
@@ -175,4 +175,5 @@ contract('INT', function ([_, initialHolder, recipient, anotherAccount]) {
       describeBurnFrom('for less amount than allowance', allowance.subn(1));
     });
   });
+*/
 });

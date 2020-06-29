@@ -14,13 +14,13 @@ contract('TetherToken', function ([_, initialHolder, recipient, anotherAccount])
   const initialSupply = new BN(100);
 
   beforeEach(async function () {
-    this.token = await TetherToken.new(1000,"TetherToken","TET",18);
+    this.token = await TetherToken.new(100,"TetherToken","TET",18,{'from':initialHolder});
   });
 
   shouldBehaveLikeERC20('ERC20', initialSupply, initialHolder, recipient, anotherAccount);
 
 
-
+  /*
   describe('_mintToken', function () {
     const amount = new BN(50);
     it('rejects a null account', async function () {
@@ -54,4 +54,5 @@ contract('TetherToken', function ([_, initialHolder, recipient, anotherAccount])
       });
     });
   });
+  */
 });
