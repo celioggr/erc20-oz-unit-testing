@@ -8,13 +8,13 @@ const {
   shouldBehaveLikeERC20Approve,
 } = require('./ERC20.behavior');
 
-const FuturXe = artifacts.require('FuturXe');
+const OpenZeppelin = artifacts.require('ERC20');
 
-contract('FuturXe', function ([_, initialHolder, recipient, anotherAccount]) {
+contract('ERC20', function ([_, initialHolder, recipient, anotherAccount]) {
   const initialSupply = new BN(100);
 
   beforeEach(async function () {
-    this.token = await FuturXe.new(100,"FuturXe","FXE",10,{'from':initialHolder});
+    this.token = await OpenZeppelin.new(100,"OpenZeppelin","OPZ",10,{'from':initialHolder});
     //this.token.transfer(initialHolder,100);
   });
 
