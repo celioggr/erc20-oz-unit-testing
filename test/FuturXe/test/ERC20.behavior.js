@@ -253,7 +253,7 @@ function shouldBehaveLikeERC20Approve (errorPrefix, owner, spender, supply, appr
         expectEvent.inLogs(logs, 'Approval', {
           _owner: owner,
           _spender: spender,
-          value: amount,
+          _value: amount,
         });
       });
 
@@ -287,7 +287,7 @@ function shouldBehaveLikeERC20Approve (errorPrefix, owner, spender, supply, appr
         expectEvent.inLogs(logs, 'Approval', {
           _owner: owner,
           _spender: spender,
-          value: amount,
+          _value: amount,
         });
       });
 
