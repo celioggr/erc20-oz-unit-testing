@@ -30,6 +30,10 @@ Edit *truffle-config.js*
     },
     + plugins: ["solidity-coverage"],
     
+    //version needed for contracts under test
+    compilers: {
+        solc: {
+        version: "0.4.17"
 # Usage
 
 Some commands commonly used.
@@ -37,6 +41,6 @@ Some commands commonly used.
 ##### Run test coverage 
     npx truffle run coverage 
 ##### Run tests
-    npm test
+    npx  truffle test
 ##### Compile
-    npm truffle compile
+    npx truffle compile
