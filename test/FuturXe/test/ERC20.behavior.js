@@ -101,7 +101,7 @@ function shouldBehaveLikeERC20 (errorPrefix, initialSupply, initialHolder, recip
 
             it('reverts', async function () {
               await expectRevert(this.token.transferFrom(
-                tokenOwner, to, amount, { from: spender }), `${errorPrefix}: transfer amount exceeds balance`
+                tokenOwner, to, amount, { from: spender }), `revert`
               );
             });
           });
@@ -117,7 +117,7 @@ function shouldBehaveLikeERC20 (errorPrefix, initialSupply, initialHolder, recip
 
             it('reverts', async function () {
               await expectRevert(this.token.transferFrom(
-                tokenOwner, to, amount, { from: spender }), `${errorPrefix}: transfer amount exceeds allowance`
+                tokenOwner, to, amount, { from: spender }), `revert`
               );
             });
           });
@@ -127,7 +127,7 @@ function shouldBehaveLikeERC20 (errorPrefix, initialSupply, initialHolder, recip
 
             it('reverts', async function () {
               await expectRevert(this.token.transferFrom(
-                tokenOwner, to, amount, { from: spender }), `${errorPrefix}: transfer amount exceeds balance`
+                tokenOwner, to, amount, { from: spender }), `revert`
               );
             });
           });
@@ -181,7 +181,7 @@ function shouldBehaveLikeERC20Transfer (errorPrefix, from, to, balance, transfer
 
       it('reverts', async function () {
         await expectRevert(transfer.call(this, from, to, amount),
-          `${errorPrefix}: transfer amount exceeds balance`
+          `revert`
         );
       });
     });
