@@ -8,9 +8,9 @@ const {
   shouldBehaveLikeERC20Approve,
 } = require('./ERC20.behavior');
 
-const OpenZeppelin = artifacts.require('ERC20');
+const OpenZeppelin = artifacts.require('OpenZeppelin');
 
-contract('ERC20', function ([_, initialHolder, recipient, anotherAccount]) {
+contract('OpenZeppelin', function ([_, initialHolder, recipient, anotherAccount]) {
   const initialSupply = new BN(100);
 
   beforeEach(async function () {

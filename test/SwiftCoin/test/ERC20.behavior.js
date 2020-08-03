@@ -76,8 +76,8 @@ function shouldBehaveLikeERC20 (errorPrefix, initialSupply, initialHolder, recip
               const { logs } = await this.token.transferFrom(tokenOwner, to, amount, { from: spender });
 
               expectEvent.inLogs(logs, 'Transfer', {
-                _from: tokenOwner,
-                _to: to,
+                from: tokenOwner,
+                to: to,
                 value: amount,
               });
             });
@@ -201,9 +201,9 @@ function shouldBehaveLikeERC20Transfer (errorPrefix, from, to, balance, transfer
         const { logs } = await transfer.call(this, from, to, amount);
 
         expectEvent.inLogs(logs, 'Transfer', {
-          _from:from,
-          _to:to,
-          _value: amount,
+          from:from,
+          to:to,
+          value: amount,
         });
       });
     });

@@ -184,7 +184,11 @@ function shouldBehaveLikeERC20Transfer (errorPrefix, from, to, balance, transfer
       const amount = balance;
 
       it('transfers the requested amount', async function () {
-        await transfer.call(this, from, to, amount);
+        const res = await transfer.call(this, from, to, amount);
+
+        console.log("LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOL");
+        //console.log(res);
+        //console.log("----------------------------------------");
 
         expect(await this.token.balanceOf(from)).to.be.bignumber.equal('0');
 
@@ -206,7 +210,6 @@ function shouldBehaveLikeERC20Transfer (errorPrefix, from, to, balance, transfer
       const amount = new BN('0');
 
       it('transfers the requested amount', async function () {
-        await transfer.call(this, from, to, amount);
 
         expect(await this.token.balanceOf(from)).to.be.bignumber.equal(balance);
 
@@ -253,7 +256,11 @@ function shouldBehaveLikeERC20Approve (errorPrefix, owner, spender, supply, appr
 
       describe('when there was no approved amount before', function () {
         it('approves the requested amount', async function () {
-          await approve.call(this, owner, spender, amount);
+          const res =  await approve.call(this, owner, spender, amount);
+
+          console.log("----------------------------------------");
+          console.log(res);
+          console.log("----------------------------------------");
 
           expect(await this.token.allowance(owner, spender)).to.be.bignumber.equal(amount);
         });

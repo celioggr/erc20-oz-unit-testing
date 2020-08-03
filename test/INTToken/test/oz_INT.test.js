@@ -6,7 +6,7 @@ const {
   shouldBehaveLikeERC20,
   shouldBehaveLikeERC20Transfer,
   shouldBehaveLikeERC20Approve,
-} = require('./ERC20.behavior');
+} = require('./ERC20.behavior.js');
 
 
 const INT = artifacts.require('INT');

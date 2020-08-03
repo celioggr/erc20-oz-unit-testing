@@ -76,8 +76,8 @@ function shouldBehaveLikeERC20 (errorPrefix, initialSupply, initialHolder, recip
               const { logs } = await this.token.transferFrom(tokenOwner, to, amount, { from: spender });
 
               expectEvent.inLogs(logs, 'Transfer', {
-                _from: tokenOwner,
-                _to: to,
+                from: tokenOwner,
+                to: to,
                 value: amount,
               });
             });
@@ -88,8 +88,8 @@ function shouldBehaveLikeERC20 (errorPrefix, initialSupply, initialHolder, recip
               const { logs } = await this.token.transferFrom(tokenOwner, to, amount, { from: spender });
 
               expectEvent.inLogs(logs, 'Approval', {
-                _owner: tokenOwner,
-                _spender: spender,
+                owner: tokenOwner,
+                spender: spender,
                 value: await this.token.allowance(tokenOwner, spender),
               });
             });
@@ -201,9 +201,9 @@ function shouldBehaveLikeERC20Transfer (errorPrefix, from, to, balance, transfer
         const { logs } = await transfer.call(this, from, to, amount);
 
         expectEvent.inLogs(logs, 'Transfer', {
-          _from:from,
-          _to:to,
-          _value: amount,
+          from:from,
+          to:to,
+          value: amount,
         });
       });
     });
@@ -251,8 +251,8 @@ function shouldBehaveLikeERC20Approve (errorPrefix, owner, spender, supply, appr
         const { logs } = await approve.call(this, owner, spender, amount);
 
         expectEvent.inLogs(logs, 'Approval', {
-          _owner: owner,
-          _spender: spender,
+          owner: owner,
+          spender: spender,
           value: amount,
         });
       });
@@ -285,8 +285,8 @@ function shouldBehaveLikeERC20Approve (errorPrefix, owner, spender, supply, appr
         const { logs } = await approve.call(this, owner, spender, amount);
 
         expectEvent.inLogs(logs, 'Approval', {
-          _owner: owner,
-          _spender: spender,
+          owner: owner,
+          spender: spender,
           value: amount,
         });
       });

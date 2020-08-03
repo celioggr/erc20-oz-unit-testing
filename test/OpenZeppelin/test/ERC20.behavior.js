@@ -5,7 +5,6 @@ const { ZERO_ADDRESS } = constants;
 function shouldBehaveLikeERC20 (errorPrefix, initialSupply, initialHolder, recipient, anotherAccount) {
   describe('total supply', function () {
     it('returns the total amount of tokens', async function () {
-      //console.log(await this.token.totalSupply());
       expect(await this.token.totalSupply()).to.be.bignumber.equal(initialSupply);
     });
   });
@@ -50,20 +49,11 @@ function shouldBehaveLikeERC20 (errorPrefix, initialSupply, initialHolder, recip
             const amount = initialSupply;
 
             it('transfers the requested amount', async function () {
-              balancetokenOwner=await this.token.balanceOf(tokenOwner);
-              /*
-              console.log(await this.token.allowance(tokenOwner,spender));
-              console.log("AAAAAAA");
-              console.log(tokenOwner);
-              console.log(balancetokenOwner);
-              console.log("AAAAAAA");
-              */
-              r = await this.token.transferFrom(tokenOwner, to, initialSupply, { from: spender });
+              await this.token.transferFrom(tokenOwner, to, amount, { from: spender });
 
-              //console.log(r);
               expect(await this.token.balanceOf(tokenOwner)).to.be.bignumber.equal('0');
 
-              expect(await this.token.balanceOf(to)).to.be.bignumber.equal(initialSupply);
+              expect(await this.token.balanceOf(to)).to.be.bignumber.equal(amount);
             });
 
             it('decreases the spender allowance', async function () {
@@ -76,24 +66,21 @@ function shouldBehaveLikeERC20 (errorPrefix, initialSupply, initialHolder, recip
               const { logs } = await this.token.transferFrom(tokenOwner, to, amount, { from: spender });
 
               expectEvent.inLogs(logs, 'Transfer', {
-                _from: tokenOwner,
-                _to: to,
+                from: tokenOwner,
+                to: to,
                 value: amount,
               });
             });
 
-            /*
-            Transferfrom does not have to emit Approval event according to EIP20
             it('emits an approval event', async function () {
               const { logs } = await this.token.transferFrom(tokenOwner, to, amount, { from: spender });
 
               expectEvent.inLogs(logs, 'Approval', {
-                _owner: tokenOwner,
-                _spender: spender,
+                owner: tokenOwner,
+                spender: spender,
                 value: await this.token.allowance(tokenOwner, spender),
               });
             });
-            */
           });
 
           describe('when the token owner does not have enough balance', function () {
@@ -133,7 +120,7 @@ function shouldBehaveLikeERC20 (errorPrefix, initialSupply, initialHolder, recip
           });
         });
       });
-      /*
+
       describe('when the recipient is the zero address', function () {
         const amount = initialSupply;
         const to = ZERO_ADDRESS;
@@ -148,9 +135,8 @@ function shouldBehaveLikeERC20 (errorPrefix, initialSupply, initialHolder, recip
           );
         });
       });
-      */
     });
-    /*
+
     describe('when the token owner is the zero address', function () {
       const amount = 0;
       const tokenOwner = ZERO_ADDRESS;
@@ -162,7 +148,6 @@ function shouldBehaveLikeERC20 (errorPrefix, initialSupply, initialHolder, recip
         );
       });
     });
-    */
   });
 
   describe('approve', function () {
@@ -201,9 +186,9 @@ function shouldBehaveLikeERC20Transfer (errorPrefix, from, to, balance, transfer
         const { logs } = await transfer.call(this, from, to, amount);
 
         expectEvent.inLogs(logs, 'Transfer', {
-          _from:from,
-          _to:to,
-          _value: amount,
+          from,
+          to,
+          value: amount,
         });
       });
     });
@@ -230,8 +215,7 @@ function shouldBehaveLikeERC20Transfer (errorPrefix, from, to, balance, transfer
       });
     });
   });
-  /*
-  Since EIP20 does not say anything about zero address, ignoring
+
   describe('when the recipient is the zero address', function () {
     it('reverts', async function () {
       await expectRevert(transfer.call(this, from, ZERO_ADDRESS, balance),
@@ -239,7 +223,6 @@ function shouldBehaveLikeERC20Transfer (errorPrefix, from, to, balance, transfer
       );
     });
   });
-  */
 }
 
 function shouldBehaveLikeERC20Approve (errorPrefix, owner, spender, supply, approve) {
@@ -251,8 +234,8 @@ function shouldBehaveLikeERC20Approve (errorPrefix, owner, spender, supply, appr
         const { logs } = await approve.call(this, owner, spender, amount);
 
         expectEvent.inLogs(logs, 'Approval', {
-          _owner: owner,
-          _spender: spender,
+          owner: owner,
+          spender: spender,
           value: amount,
         });
       });
@@ -285,8 +268,8 @@ function shouldBehaveLikeERC20Approve (errorPrefix, owner, spender, supply, appr
         const { logs } = await approve.call(this, owner, spender, amount);
 
         expectEvent.inLogs(logs, 'Approval', {
-          _owner: owner,
-          _spender: spender,
+          owner: owner,
+          spender: spender,
           value: amount,
         });
       });
@@ -313,7 +296,6 @@ function shouldBehaveLikeERC20Approve (errorPrefix, owner, spender, supply, appr
     });
   });
 
-/*
   describe('when the spender is the zero address', function () {
     it('reverts', async function () {
       await expectRevert(approve.call(this, owner, ZERO_ADDRESS, supply),
@@ -321,7 +303,6 @@ function shouldBehaveLikeERC20Approve (errorPrefix, owner, spender, supply, appr
       );
     });
   });
-  */
 }
 
 module.exports = {
