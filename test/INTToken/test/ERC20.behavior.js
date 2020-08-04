@@ -5,7 +5,6 @@ const { ZERO_ADDRESS } = constants;
 function shouldBehaveLikeERC20 (errorPrefix, initialSupply, initialHolder, recipient, anotherAccount) {
   describe('total supply', function () {
     it('returns the total amount of tokens', async function () {
-      //console.log(await this.token.totalSupply());
       expect(await this.token.totalSupply()).to.be.bignumber.equal(initialSupply);
     });
   });
@@ -51,7 +50,13 @@ function shouldBehaveLikeERC20 (errorPrefix, initialSupply, initialHolder, recip
 
             it('transfers the requested amount', async function () {
               balancetokenOwner=await this.token.balanceOf(tokenOwner);
-
+              /*
+              console.log(await this.token.allowance(tokenOwner,spender));
+              console.log("AAAAAAA");
+              console.log(tokenOwner);
+              console.log(balancetokenOwner);
+              console.log("AAAAAAA");
+              */
               r = await this.token.transferFrom(tokenOwner, to, initialSupply, { from: spender });
 
               //console.log(r);
@@ -70,8 +75,8 @@ function shouldBehaveLikeERC20 (errorPrefix, initialSupply, initialHolder, recip
               const { logs } = await this.token.transferFrom(tokenOwner, to, amount, { from: spender });
 
               expectEvent.inLogs(logs, 'Transfer', {
-                _from: tokenOwner,
-                _to: to,
+                from: tokenOwner,
+                to: to,
                 value: amount,
               });
             });
@@ -184,11 +189,7 @@ function shouldBehaveLikeERC20Transfer (errorPrefix, from, to, balance, transfer
       const amount = balance;
 
       it('transfers the requested amount', async function () {
-        const res = await transfer.call(this, from, to, amount);
-
-        console.log("LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOL");
-        //console.log(res);
-        //console.log("----------------------------------------");
+        await transfer.call(this, from, to, amount);
 
         expect(await this.token.balanceOf(from)).to.be.bignumber.equal('0');
 
@@ -199,9 +200,9 @@ function shouldBehaveLikeERC20Transfer (errorPrefix, from, to, balance, transfer
         const { logs } = await transfer.call(this, from, to, amount);
 
         expectEvent.inLogs(logs, 'Transfer', {
-          _from:from,
-          _to:to,
-          _value: amount,
+          from:from,
+          to:to,
+          value: amount,
         });
       });
     });
@@ -210,6 +211,7 @@ function shouldBehaveLikeERC20Transfer (errorPrefix, from, to, balance, transfer
       const amount = new BN('0');
 
       it('transfers the requested amount', async function () {
+        await transfer.call(this, from, to, amount);
 
         expect(await this.token.balanceOf(from)).to.be.bignumber.equal(balance);
 
@@ -220,8 +222,8 @@ function shouldBehaveLikeERC20Transfer (errorPrefix, from, to, balance, transfer
         const { logs } = await transfer.call(this, from, to, amount);
 
         expectEvent.inLogs(logs, 'Transfer', {
-          from,
-          to,
+          from:from,
+          to:from,
           value: amount,
         });
       });
@@ -250,17 +252,13 @@ function shouldBehaveLikeERC20Approve (errorPrefix, owner, spender, supply, appr
         expectEvent.inLogs(logs, 'Approval', {
           _owner: owner,
           _spender: spender,
-          value: amount,
+          _value: amount,
         });
       });
 
       describe('when there was no approved amount before', function () {
         it('approves the requested amount', async function () {
-          const res =  await approve.call(this, owner, spender, amount);
-
-          console.log("----------------------------------------");
-          console.log(res);
-          console.log("----------------------------------------");
+          await approve.call(this, owner, spender, amount);
 
           expect(await this.token.allowance(owner, spender)).to.be.bignumber.equal(amount);
         });
@@ -288,7 +286,7 @@ function shouldBehaveLikeERC20Approve (errorPrefix, owner, spender, supply, appr
         expectEvent.inLogs(logs, 'Approval', {
           _owner: owner,
           _spender: spender,
-          value: amount,
+          _value: amount,
         });
       });
 

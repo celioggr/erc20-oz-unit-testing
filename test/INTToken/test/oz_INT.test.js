@@ -6,13 +6,13 @@ const {
   shouldBehaveLikeERC20,
   shouldBehaveLikeERC20Transfer,
   shouldBehaveLikeERC20Approve,
-} = require('./ERC20.behavior.js');
+} = require('./ERC20.behavior');
 
 
 const INT = artifacts.require('INT');
 
 contract('INT', function ([_, initialHolder, recipient, anotherAccount]) {
-  const initialSupply = new BN(1000000000000000);
+  const initialSupply = new BN('1000000000000000');
 
   beforeEach(async function () {
     //has token supply hard coded on contract
