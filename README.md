@@ -1,4 +1,4 @@
-# tokenZoo-oz-unit-testing
+# erc20-oz-unit-testing
 Test real world contracts using Openzeppelin unit testing dataset
 
 ## Dependencies
